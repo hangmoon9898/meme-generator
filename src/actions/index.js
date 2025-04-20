@@ -33,9 +33,6 @@ function postMemeJson(params) {
   params["username"] = process.env.REACT_APP_MEME_USER;
   params["password"] = process.env.REACT_APP_MEME_PASS;
 
-  console.log(process.env.REACT_APP_MEME_USER);
-  console.log(process.env);
-
   const bodyParams = Object.keys(params)
     .map((key) => {
       return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
