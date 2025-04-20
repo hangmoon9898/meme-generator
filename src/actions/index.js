@@ -1,4 +1,3 @@
-import { username, password } from "./secrets";
 export const RECEIVE_MEMES = "RECEIVE_MEMES";
 export const NEW_MEME = "NEW_MEME";
 
@@ -30,8 +29,9 @@ export function newMeme(meme) {
 }
 
 function postMemeJson(params) {
-  params["username"] = username;
-  params["password"] = password;
+  // Access environment variables with Cloudflare Pages naming
+  params["username"] = process.env.meme_user;
+  params["password"] = process.env.meme_pass;
 
   const bodyParams = Object.keys(params)
     .map((key) => {

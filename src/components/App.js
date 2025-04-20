@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import MemeItem from "./MemeItem";
 import MyMemes from "./MyMemes";
-import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Form, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import "../styles/index.css";
 
 class App extends Component {
@@ -25,20 +25,20 @@ class App extends Component {
         <h4>
           <i>Write some text</i>
         </h4>
-        <Form inline>
-          <FormGroup>
-            <ControlLabel>Top</ControlLabel>
-            {""}
+        <Form inline="true">
+          <FormGroup className="me-3">
+            <FormLabel className="me-2">Top</FormLabel>
             <FormControl
               type="text"
               onChange={(event) => this.setState({ text0: event.target.value })}
-            ></FormControl>
-            <FormGroup>{""}</FormGroup>
-            <ControlLabel>Bottom</ControlLabel>
+            />
+          </FormGroup>
+          <FormGroup>
+            <FormLabel className="me-2">Bottom</FormLabel>
             <FormControl
               type="text"
               onChange={(event) => this.setState({ text1: event.target.value })}
-            ></FormControl>
+            />
           </FormGroup>
         </Form>
         {this.props.memes.slice(0, this.state.memeLimit).map((meme, index) => {
@@ -57,7 +57,6 @@ class App extends Component {
             this.setState({ memeLimit: this.state.memeLimit + 10 });
           }}
         >
-          {" "}
           Load 10 more memes...
         </div>
       </div>
