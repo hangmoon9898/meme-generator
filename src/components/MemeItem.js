@@ -20,6 +20,7 @@ class MemeItem extends Component {
     };
     this.props.createMeme(memeObj);
   }
+  
   render() {
     return (
       <div

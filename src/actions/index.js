@@ -24,7 +24,7 @@ export function fetchMemes() {
 export function newMeme(meme) {
   return {
     type: NEW_MEME,
-    meme,
+    meme
   };
 }
 
@@ -51,8 +51,11 @@ function postMemeJson(params) {
 
 export function createMeme(new_meme_object) {
   return function (dispatch) {
-    return postMemeJson(new_meme_object).then((new_meme) =>
-      dispatch(newMeme(new_meme))
-    );
+    return postMemeJson(new_meme_object).then((new_meme) => {
+      console.log("API response:", new_meme);
+      dispatch(newMeme(new_meme));
+    }).catch(error => {
+      console.error("Error creating meme:", error);
+    });
   };
 }
