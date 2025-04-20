@@ -33,7 +33,8 @@ function postMemeJson(params) {
   params["username"] = process.env.meme_user;
   params["password"] = process.env.meme_pass;
 
-  console.log(params["username"] = process.env.MEME_USER);
+  console.log(process.env.MEME_USER);
+  console.log(process.env);
 
   const bodyParams = Object.keys(params)
     .map((key) => {
