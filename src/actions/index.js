@@ -30,10 +30,10 @@ export function newMeme(meme) {
 
 function postMemeJson(params) {
   // Access environment variables with Cloudflare Pages naming
-  params["username"] = process.env.meme_user;
-  params["password"] = process.env.meme_pass;
+  params["username"] = process.env.REACT_APP_MEME_USER;
+  params["password"] = process.env.REACT_APP_MEME_PASS;
 
-  console.log(process.env.MEME_USER);
+  console.log(process.env.REACT_APP_MEME_USER);
   console.log(process.env);
 
   const bodyParams = Object.keys(params)
