@@ -7,18 +7,27 @@ class MemeItem extends Component {
     super();
     this.state = {
       hovered: false,
+      creating: false
     };
   }
 
   postMeme() {
-    console.log("this.props", this.props);
+    this.setState({ creating: true });
+    
     const { text0, text1 } = this.props;
     const memeObj = {
       template_id: this.props.meme.id,
       text0,
       text1,
     };
-    this.props.createMeme(memeObj);
+    
+    this.props.createMeme(memeObj)
+      .then(() => {
+        this.setState({ creating: false });
+      })
+      .catch(() => {
+        this.setState({ creating: false });
+      });
   }
   
   render() {
@@ -32,11 +41,11 @@ class MemeItem extends Component {
         <img
           src={this.props.meme.url}
           alt={this.props.meme.name}
-          className={this.state.hovered ? "meme-img darken-img" : "meme-img"}
+          className={this.state.hovered || this.state.creating ? "meme-img darken-img" : "meme-img"}
         />
 
-        <p className={this.state.hovered ? "meme-txt" : "no-txt"}>
-          {this.props.meme.name}
+        <p className={this.state.hovered || this.state.creating ? "meme-txt" : "no-txt"}>
+          {this.state.creating ? "Creating..." : this.props.meme.name}
         </p>
       </div>
     );

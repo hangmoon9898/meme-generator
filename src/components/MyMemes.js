@@ -3,17 +3,28 @@ import { connect } from "react-redux";
 
 class MyMemes extends Component {
   render() {
+    if (this.props.myMemes.length === 0) {
+      return (
+        <div className="empty-memes-message">
+          No memes created yet. Select a template and add text to create your first meme!
+        </div>
+      );
+    }
+    
     return (
-      <div>
+      <div className="my-memes-container">
         {this.props.myMemes.map((meme, index) => {
-          return (
+          // Handle case where meme structure might be different
+          const imageUrl = meme.data?.url || meme.url || '';
+          
+          return imageUrl ? (
             <img
               key={index}
-              src={meme.data.url}
+              src={imageUrl}
               alt="my-meme"
               className="my-meme-img"
             />
-          );
+          ) : null;
         })}
       </div>
     );
