@@ -72,7 +72,7 @@ class App extends Component {
                     </Col>
                   </Row>
                   <FormGroup className="mb-3">
-                    <FormLabel>Search Templates</FormLabel>
+                    <FormLabel>Search Templates (optional) </FormLabel>
                     <FormControl
                       type="text"
                       placeholder="Search by name..."
