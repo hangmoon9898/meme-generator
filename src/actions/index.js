@@ -33,6 +33,8 @@ function postMemeJson(params) {
   params["username"] = process.env.meme_user;
   params["password"] = process.env.meme_pass;
 
+  console.log(params["username"] = process.env.meme_user);
+
   const bodyParams = Object.keys(params)
     .map((key) => {
       return encodeURIComponent(key) + "=" + encodeURIComponent(params[key]);
@@ -52,6 +54,7 @@ function postMemeJson(params) {
 export function createMeme(new_meme_object) {
   return function (dispatch) {
     return postMemeJson(new_meme_object).then((new_meme) => {
+      
       console.log("API response:", new_meme);
       dispatch(newMeme(new_meme));
     }).catch(error => {
